@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLocation } from 'react-router-dom';
@@ -17,13 +18,15 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   }, [pathname]);
   
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow pt-20 page-transition">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <TooltipProvider>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow pt-20 page-transition">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </TooltipProvider>
   );
 };
 
