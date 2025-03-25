@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,39 +8,41 @@ const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
-      
+
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
-      
+
       setIsSubmitting(false);
     }, 1500);
   };
@@ -63,7 +64,7 @@ const ContactForm = () => {
             className="w-full"
           />
         </div>
-        
+
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">
             Email
@@ -80,7 +81,7 @@ const ContactForm = () => {
           />
         </div>
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="subject" className="text-sm font-medium">
           Subject
@@ -95,7 +96,7 @@ const ContactForm = () => {
           className="w-full"
         />
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-medium">
           Message
@@ -110,13 +111,13 @@ const ContactForm = () => {
           className="min-h-[150px] w-full"
         />
       </div>
-      
-      <Button 
-        type="submit" 
+
+      <Button
+        type="submit"
         disabled={isSubmitting}
         className="w-full md:w-auto px-8"
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
+        {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );
